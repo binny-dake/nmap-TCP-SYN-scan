@@ -1,0 +1,84 @@
+C:\Users\binny>nmap -sT 192.168.1.16
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-05-26 21:32 India Standard Time
+Nmap scan report for 192.168.1.16
+Host is up (0.034s latency).
+Not shown: 993 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+88/tcp   open  kerberos-sec
+3000/tcp open  ppp
+3306/tcp open  mysql
+5000/tcp open  upnp
+5432/tcp open  postgresql
+5900/tcp open  vnc
+7000/tcp open  afs3-fileserver
+MAC Address: 9C:3E:53:93:30:37 (Apple)
+
+Nmap done: 1 IP address (1 host up) scanned in 25.50 seconds
+
+
+1. Scan Summary
+Scan Command Used: nmap -sT 192.168.1.16
+
+Nmap Version: 7.95
+
+Scan Date: May 26, 2025
+
+Scan Time: 21:32 IST
+
+Scan Type: TCP Connect Scan (-sT)
+
+Target IP Address: 192.168.1.16
+
+Host Status: Up (Latency: 0.034 seconds)
+
+MAC Address: 9C:3E:53:93:30:37 (Vendor: Apple Inc.)
+
+Scan Duration: 25.50 seconds
+
+Filtered Ports: 993 (No response)
+
+Open Ports Detected: 7
+
+2. Open Ports and Services
+Port	Protocol	State	Service
+88	TCP	Open	kerberos-sec
+3000	TCP	Open	ppp
+3306	TCP	Open	mysql
+5000	TCP	Open	upnp
+5432	TCP	Open	postgresql
+5900	TCP	Open	vnc
+7000	TCP	Open	afs3-fileserver
+
+3. Security Observations & Recommendations
+🔐 Database Exposure
+
+Ports 3306 (MySQL) and 5432 (PostgreSQL) are publicly accessible. These should be protected by:
+
+Strong authentication credentials
+
+IP whitelisting or firewall rules
+
+Disabling remote access if not necessary
+
+🖥️ Remote Desktop Service Detected
+
+Port 5900 (VNC) is open. VNC is a known target for brute-force and exploit attacks:
+
+Ensure it is protected with strong, unique credentials
+
+Use SSH tunneling or VPN to restrict access
+
+Consider disabling if not in active use
+
+🌐 Other Open Services
+
+kerberos-sec (Port 88): Ensure proper domain-level security configurations
+
+upnp (Port 5000): Universal Plug and Play can be insecure; restrict or disable if not required
+
+afs3-fileserver (Port 7000): Validate necessity and apply access controls
+
+ppp (Port 3000): This may be a custom or development service; review configuration and exposure
+
+4. Conclusion
+The scan reveals that the host at 192.168.1.16 is running multiple services that may pose a security risk if left unprotected. Immediate actions should include reviewing the necessity of each open port, applying access control mechanisms (firewalls, VPNs), and hardening each exposed service.
